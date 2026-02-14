@@ -1,0 +1,129 @@
+{
+  "kind": "build_request",
+  "title": "Package the app as a downloadable Android APK",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add an Android packaging pipeline so the existing React (Vite) app can be built into a downloadable Android APK (debug build is acceptable) using a standard webview wrapper approach (e.g., Capacitor) without changing the app’s core gameplay code.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make it a downloadable apk file"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A developer can run a documented single command (or a short documented sequence) to produce an APK file from the current project.",
+        "The generated APK installs and launches on an Android device/emulator and loads the game UI successfully.",
+        "The build output location of the APK is documented (exact path) and reproducible."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add npm scripts and documentation for Android builds, including prerequisites (Android Studio / SDK), how to run a dev build on an emulator/device, and how to generate a downloadable APK artifact.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make it a downloadable apk file"
+        ]
+      },
+      "acceptanceCriteria": [
+        "package.json includes clearly named scripts for Android build/run and APK generation (e.g., android:dev, android:apk).",
+        "Project documentation includes: prerequisites, setup steps, build commands, and where to find the produced APK file.",
+        "Documentation uses English for all user-facing text."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Brand the Android app with a proper app name, package/application ID, version code/name, and a generated app icon set suitable for Android (including adaptive icons).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make it a downloadable apk file"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Android app displays the chosen app name on the device home screen and in system app settings.",
+        "Android app icon appears correctly on the launcher (no default placeholder icon).",
+        "Version code/name can be incremented via documented configuration."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Ensure the Android build uses the correct base URL / asset loading configuration for a bundled Vite build so the game renders correctly when launched from the installed APK.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make it a downloadable apk file"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The installed APK loads the built web assets without a blank screen caused by incorrect asset paths.",
+        "The game canvas and HUD render on first launch."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "If any Internet Computer canister URLs or environment-dependent settings are required for the app to function, document how those settings are handled in the Android build (e.g., dev vs production configuration) and ensure the default APK build has a clear, working default behavior.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make it a downloadable apk file"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Documentation explains how the Android build connects to the IC backend (or what functionality is available without it).",
+        "Default APK behavior is explicitly stated and testable."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add a frontend requirement to render any newly generated images as static assets under frontend/public/assets/generated (do not serve images through the backend).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make it a downloadable apk file"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All newly generated images are committed under frontend/public/assets/generated and referenced from the frontend build (not via backend endpoints)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Respect the single-actor backend architecture (all Motoko logic remains in backend/main.mo; only add migration.mo if state upgrades are required).",
+    "Do not edit any files under frontend/src/components/ui or any paths listed as immutable in SYSTEM_CONTEXT.",
+    "Use English for any user-facing text."
+  ],
+  "nonGoals": [
+    "Publishing the app to the Google Play Store.",
+    "Implementing push notifications, real-time messaging, or third-party authentication providers.",
+    "Rewriting the app into a native Android UI (keep the existing React app as the UI)."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Square app icon artwork, high-contrast, minimal, horror-tech style (app-icon.dim_1024x1024.png)",
+      "Adaptive icon foreground artwork on transparent background (app-icon-foreground.dim_1024x1024.png)",
+      "Adaptive icon background artwork, simple flat color/texture (app-icon-background.dim_1024x1024.png)"
+    ],
+    "edits": []
+  }
+}

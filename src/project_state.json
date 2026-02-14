@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Project direction expanded from an Internet Computer dapp scaffold into a game concept titled E.L.B.E.R.R. (first-person psychological/analog horror), with a request to support mobile controls and to produce an installable Android APK build.",
+  "existing_features": [
+    {
+      "id": "IF-1",
+      "title": "Motoko backend canister scaffold",
+      "synonyms": [
+        "ICP backend",
+        "Motoko canister"
+      ],
+      "description": "Backend canister foundation in Motoko with project wiring and generated Candid bindings for the frontend.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-2",
+      "title": "React + Vite frontend scaffold",
+      "synonyms": [
+        "Vite app",
+        "React UI"
+      ],
+      "description": "Frontend application structure with Tailwind styling, app entrypoints, and ICP canister integration setup.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-3",
+      "title": "Internet Identity authentication integration",
+      "synonyms": [
+        "II login",
+        "Internet Identity"
+      ],
+      "description": "Frontend hooks and utilities to authenticate users via Internet Identity and create an authenticated actor for backend calls.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-4",
+      "title": "Game UI foundation",
+      "synonyms": [
+        "Game screen",
+        "Core gameplay UI"
+      ],
+      "description": "Initial game-oriented UI components (e.g., GameUI/Player/Workshop) and app composition.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-5",
+      "title": "Unified input system (keyboard/mouse/touch) with mobile controls",
+      "synonyms": [
+        "Touch controls",
+        "Virtual joystick",
+        "Mobile input overlay"
+      ],
+      "description": "Input abstraction supporting keyboard/mouse plus touch via a bridge, including mobile overlays (virtual joystick, look area, action buttons) and configurable controls settings panel.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-6",
+      "title": "shadcn/ui component set integrated",
+      "synonyms": [
+        "UI component library",
+        "shadcn components"
+      ],
+      "description": "Large set of shadcn/ui components added to the frontend for rapid UI development, along with eslint rules and configuration.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-7",
+      "title": "Build/deploy template for ICP project",
+      "synonyms": [
+        "Build template",
+        "Docker/build scripts",
+        "icp.yaml"
+      ],
+      "description": "Template tooling and configuration for building and deploying the project (Dockerfile, scripts, workspace configs, canister yamls).",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-android-packaging-pipeline-so-the-existing-react-vite-app-can-be-built-into-a-downloadable-android-apk-debug-build-is-acceptable-using-a-standard-webview-wrapper-approach-e-g-capacitor-without-changing-the-app-s-core-gameplay-code",
+      "title": "Add an Android packaging pipeline so the existing React (Vite) app can be built into a downloadable Android APK (debug build is acceptable) using a standard webview wrapper approach (e.g., Capacitor) without changing the app’s core gameplay code.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-npm-scripts-and-documentation-for-android-builds-including-prerequisites-android-studio-sdk-how-to-run-a-dev-build-on-an-emulator-device-and-how-to-generate-a-downloadable-apk-artifact",
+      "title": "Add npm scripts and documentation for Android builds, including prerequisites (Android Studio / SDK), how to run a dev build on an emulator/device, and how to generate a downloadable APK artifact.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-brand-the-android-app-with-a-proper-app-name-package-application-id-version-code-name-and-a-generated-app-icon-set-suitable-for-android-including-adaptive-icons",
+      "title": "Brand the Android app with a proper app name, package/application ID, version code/name, and a generated app icon set suitable for Android (including adaptive icons).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-android-build-uses-the-correct-base-url-asset-loading-configuration-for-a-bundled-vite-build-so-the-game-renders-correctly-when-launched-from-the-installed-apk",
+      "title": "Ensure the Android build uses the correct base URL / asset loading configuration for a bundled Vite build so the game renders correctly when launched from the installed APK.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-if-any-internet-computer-canister-urls-or-environment-dependent-settings-are-required-for-the-app-to-function-document-how-those-settings-are-handled-in-the-android-build-e-g-dev-vs-production-configuration-and-ensure-the-default-apk-build-has-a-clear-working-default-behavior",
+      "title": "If any Internet Computer canister URLs or environment-dependent settings are required for the app to function, document how those settings are handled in the Android build (e.g., dev vs production configuration) and ensure the default APK build has a clear, working default behavior.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-frontend-requirement-to-render-any-newly-generated-images-as-static-assets-under-frontend-public-assets-generated-do-not-serve-images-through-the-backend",
+      "title": "Add a frontend requirement to render any newly generated images as static assets under frontend/public/assets/generated (do not serve images through the backend).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add mobile controls support for the game experience (touch-friendly input/UI).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Provide a downloadable Android APK build/package of the app/game.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "architectural_notes": [
+    "Frontend uses React + Vite with Tailwind and shadcn/ui component library for UI.",
+    "Authentication handled via Internet Identity; frontend creates an authenticated actor for canister calls.",
+    "Input handled through a unified input layer that supports keyboard/mouse and touch, with a touch input bridge for mobile overlays.",
+    "Project includes an ICP build/deploy template (Docker/scripts/config) to standardize builds and deployment.",
+    "Need an Android packaging/distribution pipeline to generate a downloadable APK."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Square app icon artwork, high-contrast, minimal, horror-tech style (app-icon.dim_1024x1024.png)\n- Adaptive icon foreground artwork on transparent background (app-icon-foreground.dim_1024x1024.png)\n- Adaptive icon background artwork, simple flat color/texture (app-icon-background.dim_1024x1024.png)",
+  "generatedImages": [
+    {
+      "filename": "app-icon.dim_1024x1024.png",
+      "description": "Square app icon artwork, high-contrast, minimal, horror-tech style",
+      "targetWidth": 1024,
+      "targetHeight": 1024
+    },
+    {
+      "filename": "app-icon-foreground.dim_1024x1024.png",
+      "description": "Adaptive icon foreground artwork on transparent background",
+      "targetWidth": 1024,
+      "targetHeight": 1024
+    },
+    {
+      "filename": "app-icon-background.dim_1024x1024.png",
+      "description": "Adaptive icon background artwork, simple flat color/texture",
+      "targetWidth": 1024,
+      "targetHeight": 1024
+    }
+  ],
+  "gameProjectType": "3d",
+  "projectName": "E.L.B.E.R.R.",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

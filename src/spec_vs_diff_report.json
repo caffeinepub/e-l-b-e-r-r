@@ -1,0 +1,60 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-05T05:27:21.525Z",
+  "summary": "Diff adds initial Capacitor/Vite configuration and Android build documentation stubs, plus Vite base path adjustment for relative asset loading. However, the core Android APK pipeline pieces (Capacitor Android project setup, npm scripts, APK output path instructions), Android branding details (versioning, icon assets), IC environment handling docs, and required generated icon image assets are not evidenced in the diff summary.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Add an Android packaging pipeline so the existing React (Vite) app can be built into a downloadable Android APK using a standard webview wrapper approach (e.g., Capacitor) without changing core gameplay code.",
+      "reason": "While Capacitor config and some Android docs exist, the diff summary does not show an actual generated/committed Capacitor Android project (e.g., android/app Gradle files) or documented reproducible command sequence that produces an APK, nor the exact APK output path.",
+      "evidence": [
+        "frontend/capacitor.config.ts",
+        "frontend/android/README.md",
+        "frontend/ANDROID.md"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Add npm scripts and documentation for Android builds (prereqs, emulator/device dev run, APK generation, and where to find the APK).",
+      "reason": "Documentation file(s) were added, but the diff summary shows no package.json changes adding android scripts, and the added docs appear truncated/incomplete and do not evidence emulator/device run steps nor the exact produced APK path.",
+      "evidence": [
+        "frontend/ANDROID.md"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Brand the Android app with proper app name, package/application ID, version code/name, and a generated app icon set suitable for Android (including adaptive icons).",
+      "reason": "App name and appId are set in Capacitor config, but there is no evidence of Android-side versionCode/versionName configuration or any committed launcher/adaptive icon assets and their wiring into the Android project.",
+      "evidence": [
+        "frontend/capacitor.config.ts"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "requirement": "Document how IC canister URLs/environment-dependent settings are handled in the Android build and ensure the default APK build has clear working default behavior.",
+      "reason": "No evidence in the diff summary that ANDROID.md (or other docs) explains IC backend connectivity/configuration for Android builds or states default APK behavior with/without backend connectivity.",
+      "evidence": [
+        "frontend/ANDROID.md"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "requirement": "Commit newly generated images under frontend/public/assets/generated and reference them from the frontend build (not via backend endpoints).",
+      "reason": "The diff summary does not show any new image assets added under frontend/public/assets/generated, including the required app icon artworks (square and adaptive foreground/background).",
+      "evidence": []
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.72,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/ANDROID.md",
+    "frontend/android/.gitignore",
+    "frontend/android/README.md",
+    "frontend/capacitor.config.ts",
+    "frontend/index.html",
+    "frontend/vite.config.ts",
+    "project_state.json"
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Android APK packaging for the existing React (Vite) game via Capacitor",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add an Android packaging pipeline using a standard WebView wrapper (Capacitor) to produce a downloadable debug APK without changing core gameplay code.",
+      "acceptanceCriteria": [
+        "A developer can run a documented single command (or a short documented sequence) to produce an APK file from the current project.",
+        "The generated APK installs and launches on an Android device/emulator and loads the game UI successfully.",
+        "The build output location of the APK is documented (exact path) and reproducible."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/package.json",
+          "operation": "create",
+          "description": "Add/define Android packaging dependencies (Capacitor + Android platform tooling) and scripts needed to build the web bundle and wrap it into an Android project."
+        },
+        {
+          "path": "frontend/capacitor.config.ts",
+          "operation": "create",
+          "description": "Add Capacitor configuration pointing to the Vite build output directory and setting Android app metadata needed for building an APK."
+        },
+        {
+          "path": "frontend/android/.gitignore",
+          "operation": "create",
+          "description": "Add Android project ignore rules appropriate for a Capacitor-managed Android folder to keep the repository clean and reproducible."
+        },
+        {
+          "path": "frontend/android/README.md",
+          "operation": "create",
+          "description": "Document that this Android project is generated/managed by the Capacitor pipeline and how it should be regenerated/synced from the web build."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add npm scripts and English documentation for Android prerequisites, emulator/device dev workflow, and APK artifact generation.",
+      "acceptanceCriteria": [
+        "package.json includes clearly named scripts for Android build/run and APK generation (e.g., android:dev, android:apk).",
+        "Project documentation includes: prerequisites, setup steps, build commands, and where to find the produced APK file.",
+        "Documentation uses English for all user-facing text."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/package.json",
+          "operation": "modify",
+          "description": "Add clearly named scripts for the Android workflow (e.g., building web assets, syncing Capacitor Android, opening Android Studio, and producing a debug APK via Gradle)."
+        },
+        {
+          "path": "frontend/ANDROID.md",
+          "operation": "create",
+          "description": "Add English documentation covering: Android Studio/SDK prerequisites, one-time setup, dev run instructions for emulator/device, commands to produce the debug APK, and the exact reproducible APK output path (e.g., frontend/android/app/build/outputs/apk/debug/app-debug.apk)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Brand the Android app with app name, application/package ID, version code/name, and a proper Android icon set (including adaptive icons).",
+      "acceptanceCriteria": [
+        "Android app displays the chosen app name on the device home screen and in system app settings.",
+        "Android app icon appears correctly on the launcher (no default placeholder icon).",
+        "Version code/name can be incremented via documented configuration."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/capacitor.config.ts",
+          "operation": "modify",
+          "description": "Set the Android app display name, appId (package/application ID), and baseline version metadata used by the Android wrapper build."
+        },
+        {
+          "path": "frontend/android/app/src/main/AndroidManifest.xml",
+          "operation": "modify",
+          "description": "Ensure the Android app uses the intended application ID/app label and references the generated launcher/adaptive icon resources instead of defaults."
+        },
+        {
+          "path": "frontend/android/app/src/main/res/values/strings.xml",
+          "operation": "modify",
+          "description": "Set the Android application name string so the correct app name appears on the launcher and in system settings."
+        },
+        {
+          "path": "frontend/android/app/build.gradle",
+          "operation": "modify",
+          "description": "Set/confirm versionCode and versionName and document where to increment them for release iteration (debug APK acceptable)."
+        },
+        {
+          "path": "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+          "operation": "modify",
+          "description": "Configure the adaptive icon to use the generated foreground/background assets so the launcher icon is not a placeholder."
+        },
+        {
+          "path": "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+          "operation": "modify",
+          "description": "Configure the round adaptive icon to use the generated foreground/background assets where applicable."
+        },
+        {
+          "path": "frontend/ANDROID.md",
+          "operation": "modify",
+          "description": "Document the chosen app name, appId (package/application ID), and how to increment Android versionCode/versionName for future builds."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Ensure bundled Vite asset paths/base URL configuration works correctly when loaded from inside the installed Android APK (no blank screen).",
+      "acceptanceCriteria": [
+        "The installed APK loads the built web assets without a blank screen caused by incorrect asset paths.",
+        "The game canvas and HUD render on first launch."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/vite.config.ts",
+          "operation": "create",
+          "description": "Add Vite configuration that sets an Android-friendly base/asset loading configuration for file-based/WebView packaging so built assets resolve correctly when served from the APK."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Confirm the HTML entry remains compatible with the Vite base/asset configuration used for Android packaging (avoid absolute asset references that break in a WebView)."
+        },
+        {
+          "path": "frontend/ANDROID.md",
+          "operation": "modify",
+          "description": "Document the rationale and required Vite base/asset configuration for Android packaging and troubleshooting steps for blank screen/asset path issues."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Document and handle any environment-dependent Internet Computer configuration for Android builds, with a clear default behavior for the produced APK.",
+      "acceptanceCriteria": [
+        "Documentation explains how the Android build connects to the IC backend (or what functionality is available without it).",
+        "Default APK behavior is explicitly stated and testable."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/config.ts",
+          "operation": "modify",
+          "description": "Ensure environment-dependent settings used by the app (e.g., II URL or IC-related configuration) have an explicit, safe default for Android builds and can be overridden via documented build-time configuration."
+        },
+        {
+          "path": "frontend/ANDROID.md",
+          "operation": "modify",
+          "description": "Document how Android builds determine IC-related configuration (dev vs production), what the default APK does by default, and how to override settings when building the APK."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add and reference newly generated images as static frontend assets under frontend/public/assets/generated (not served by the backend).",
+      "acceptanceCriteria": [
+        "All newly generated images are committed under frontend/public/assets/generated and referenced from the frontend build (not via backend endpoints)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/app-icon.dim_1024x1024.png",
+          "operation": "create",
+          "description": "Add the generated square app icon artwork at the exact required path so it can be used as a source asset for Android icon generation."
+        },
+        {
+          "path": "frontend/public/assets/generated/app-icon-foreground.dim_1024x1024.png",
+          "operation": "create",
+          "description": "Add the generated adaptive icon foreground artwork (transparent background) at the exact required path for Android adaptive icon generation."
+        },
+        {
+          "path": "frontend/public/assets/generated/app-icon-background.dim_1024x1024.png",
+          "operation": "create",
+          "description": "Add the generated adaptive icon background artwork at the exact required path for Android adaptive icon generation."
+        },
+        {
+          "path": "frontend/package.json",
+          "operation": "modify",
+          "description": "Add a script to generate Android launcher/adaptive icons from the committed images under frontend/public/assets/generated and apply them into the Android project as part of the reproducible build."
+        },
+        {
+          "path": "frontend/ANDROID.md",
+          "operation": "modify",
+          "description": "Document how the Android icon set is produced from the committed images at frontend/public/assets/generated/app-icon.dim_1024x1024.png, frontend/public/assets/generated/app-icon-foreground.dim_1024x1024.png, and frontend/public/assets/generated/app-icon-background.dim_1024x1024.png."
+        }
+      ]
+    }
+  ]
+}

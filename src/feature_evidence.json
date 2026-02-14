@@ -1,0 +1,118 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-an-android-packaging-pipeline-so-the-existing-react-vite-app-can-be-built-into-a-downloadable-android-apk-debug-build-is-acceptable-using-a-standard-webview-wrapper-approach-e-g-capacitor-without-changing-the-app-s-core-gameplay-code",
+      "featureTitle": "Add an Android packaging pipeline so the existing React (Vite) app can be built into a downloadable Android APK (debug build is acceptable) using a standard webview wrapper approach (e.g., Capacitor) without changing the app’s core gameplay code.",
+      "files": [
+        "frontend/android/.gitignore",
+        "frontend/android/README.md",
+        "frontend/capacitor.config.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-npm-scripts-and-documentation-for-android-builds-including-prerequisites-android-studio-sdk-how-to-run-a-dev-build-on-an-emulator-device-and-how-to-generate-a-downloadable-apk-artifact",
+      "featureTitle": "Add npm scripts and documentation for Android builds, including prerequisites (Android Studio / SDK), how to run a dev build on an emulator/device, and how to generate a downloadable APK artifact.",
+      "files": [
+        "frontend/ANDROID.md"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-brand-the-android-app-with-a-proper-app-name-package-application-id-version-code-name-and-a-generated-app-icon-set-suitable-for-android-including-adaptive-icons",
+      "featureTitle": "Brand the Android app with a proper app name, package/application ID, version code/name, and a generated app icon set suitable for Android (including adaptive icons).",
+      "files": [
+        "frontend/ANDROID.md",
+        "frontend/capacitor.config.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-android-build-uses-the-correct-base-url-asset-loading-configuration-for-a-bundled-vite-build-so-the-game-renders-correctly-when-launched-from-the-installed-apk",
+      "featureTitle": "Ensure the Android build uses the correct base URL / asset loading configuration for a bundled Vite build so the game renders correctly when launched from the installed APK.",
+      "files": [
+        "frontend/ANDROID.md",
+        "frontend/index.html",
+        "frontend/vite.config.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-if-any-internet-computer-canister-urls-or-environment-dependent-settings-are-required-for-the-app-to-function-document-how-those-settings-are-handled-in-the-android-build-e-g-dev-vs-production-configuration-and-ensure-the-default-apk-build-has-a-clear-working-default-behavior",
+      "featureTitle": "If any Internet Computer canister URLs or environment-dependent settings are required for the app to function, document how those settings are handled in the Android build (e.g., dev vs production configuration) and ensure the default APK build has a clear, working default behavior.",
+      "files": [
+        "frontend/ANDROID.md"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-frontend-requirement-to-render-any-newly-generated-images-as-static-assets-under-frontend-public-assets-generated-do-not-serve-images-through-the-backend",
+      "featureTitle": "Add a frontend requirement to render any newly generated images as static assets under frontend/public/assets/generated (do not serve images through the backend).",
+      "files": [
+        "frontend/ANDROID.md"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

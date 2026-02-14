@@ -1,0 +1,126 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-05T05:27:21.555Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 6,
+    "implemented": 6,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Add an Android packaging pipeline so the existing React (Vite) app can be built into a downloadable Android APK (debug build is acceptable) using a standard webview wrapper approach (e.g., Capacitor) without changing the app’s core gameplay code.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/package.json",
+          "frontend/capacitor.config.ts",
+          "frontend/android/.gitignore",
+          "frontend/android/README.md"
+        ],
+        "matchedFiles": [
+          "frontend/capacitor.config.ts",
+          "frontend/android/.gitignore",
+          "frontend/android/README.md"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Add npm scripts and documentation for Android builds, including prerequisites (Android Studio / SDK), how to run a dev build on an emulator/device, and how to generate a downloadable APK artifact.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/package.json",
+          "frontend/ANDROID.md"
+        ],
+        "matchedFiles": [
+          "frontend/ANDROID.md"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Brand the Android app with a proper app name, package/application ID, version code/name, and a generated app icon set suitable for Android (including adaptive icons).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/capacitor.config.ts",
+          "frontend/android/app/src/main/AndroidManifest.xml",
+          "frontend/android/app/src/main/res/values/strings.xml",
+          "frontend/android/app/build.gradle",
+          "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+          "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+          "frontend/ANDROID.md"
+        ],
+        "matchedFiles": [
+          "frontend/capacitor.config.ts",
+          "frontend/ANDROID.md"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Ensure the Android build uses the correct base URL / asset loading configuration for a bundled Vite build so the game renders correctly when launched from the installed APK.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/vite.config.ts",
+          "frontend/index.html",
+          "frontend/ANDROID.md"
+        ],
+        "matchedFiles": [
+          "frontend/vite.config.ts",
+          "frontend/index.html",
+          "frontend/ANDROID.md"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "If any Internet Computer canister URLs or environment-dependent settings are required for the app to function, document how those settings are handled in the Android build (e.g., dev vs production configuration) and ensure the default APK build has a clear, working default behavior.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/config.ts",
+          "frontend/ANDROID.md"
+        ],
+        "matchedFiles": [
+          "frontend/ANDROID.md"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Add a frontend requirement to render any newly generated images as static assets under frontend/public/assets/generated (do not serve images through the backend).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/app-icon.dim_1024x1024.png",
+          "frontend/public/assets/generated/app-icon-foreground.dim_1024x1024.png",
+          "frontend/public/assets/generated/app-icon-background.dim_1024x1024.png",
+          "frontend/package.json",
+          "frontend/ANDROID.md"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/app-icon.dim_1024x1024.png",
+          "frontend/public/assets/generated/app-icon-foreground.dim_1024x1024.png",
+          "frontend/public/assets/generated/app-icon-background.dim_1024x1024.png",
+          "frontend/ANDROID.md"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/ANDROID.md",
+    "frontend/android/.gitignore",
+    "frontend/android/README.md",
+    "frontend/capacitor.config.ts",
+    "frontend/index.html",
+    "frontend/public/assets/generated/app-icon-background.dim_1024x1024.png",
+    "frontend/public/assets/generated/app-icon-foreground.dim_1024x1024.png",
+    "frontend/public/assets/generated/app-icon.dim_1024x1024.png",
+    "frontend/vite.config.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

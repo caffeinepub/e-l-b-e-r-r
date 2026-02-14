@@ -1,2 +1,3 @@
-# e-l-b-e-r-r
-Exported from Caffeine project: E.L.B.E.R.R.
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`
